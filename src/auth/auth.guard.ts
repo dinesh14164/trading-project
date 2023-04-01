@@ -34,14 +34,12 @@ import {
     }
   
     private extractTokenFromHeader(request): string | undefined {
-        console.log('request', request.handshake)
       let authToken = '';
       if (request.handshake) {
         authToken = request.handshake?.headers?.authorization
       } else {
         authToken = request.headers?.authorization;
       }
-      console.log('Gaurd', authToken);
       const [type, token] = authToken?.split(' ') ?? [];
       return type === 'Bearer' ? token : undefined;
     }

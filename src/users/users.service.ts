@@ -14,7 +14,6 @@ export class UsersService {
     ) {}
 
       async login(payload: IUser): Promise<{ token: string }> {
-        console.log('service', payload);
         const user = await this.findOne(payload);
         if (!user) {
             return null;
@@ -33,7 +32,6 @@ export class UsersService {
 
       async findOne(user: IUser): Promise<IUser> {
         const userDb = await this.userModel.findOne({ email: user.email, password: user.password });
-        console.log('db user', userDb);
         return userDb;
       }
 }

@@ -7,7 +7,6 @@ export class UsersController {
     constructor(private userService: UsersService) {}
     @Post('login')
     async login(@Body() body: IUser): Promise<{ token: string }> {
-      console.log('body', body);
       const token = await this.userService.login(body);
       if (!token) {
         throw new UnauthorizedException();
